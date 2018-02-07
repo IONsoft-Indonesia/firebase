@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>firebase</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-messaging.js"></script>
+    <script>
+        // Menginisialisasi Firebase
+        var config = {
+            apiKey: "AIzaSyBz0ypVXY-G1fxHfhHoBFUsGvWqRrT0RKE",
+            authDomain: "fir-aac4b.firebaseapp.com",
+            databaseURL: "https://fir-aac4b.firebaseio.com",
+            projectId: "fir-aac4b",
+            storageBucket: "fir-aac4b.appspot.com",
+            messagingSenderId: "177614548418"
+        };
+        firebase.initializeApp(config);
+
+        // Get a reference to the database service (Dapatkan referensi ke layanan database)
+        var database = firebase.database();
+
+        function writeUserData(userId, name, email, imageUrl) {
+            firebase.database().ref('users/' + userId).set({
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+            });
+        };
+		function deleteData(id){
+			firebase.database().ref('/users/' + id).remove();
+		}
+		
+		function updateData(id,name){
+			firebase.database().ref('/users/' + id).update({ username: name });
+		}
+
+        function writeData(name, email, imageUrl) {
+            var postData = {
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+            };
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref('users/').push().key;
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        var updates = {};
+        updates['/users/' + newPostKey] = postData;
+        firebase.database().ref().update(updates);
+        };
+
+        var commentsRef = firebase.database().ref('users/');
+        commentsRef.on('child_added', function(data) {
+            $("#boxchat").append("<div>"+data.val().username+"</div>");
+        });
+
+        commentsRef.on('child_changed', function(data) {
+
+        });
+
+        commentsRef.on('child_removed', function(data) {
+
+        });
+    </script>
+</head>
+<body>
+<button value="set" onclick="writeUserData('4','diansuihanaa','dian@gmail','urlimg')">klik</button>
+<button value="set" onclick="writeData('diansuihanaaa','dian@gmaila','urlimga')">klik</button>
+<div id="boxchat"></div>
+</body>
+</html>

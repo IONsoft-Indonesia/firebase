@@ -1,0 +1,24 @@
+1. apa itu firebase?
+suatu database yang memakai konsep nosql dan digunakan untuk realtime database.
+
+2. dalam menggunakannya memiliki 3 event.
+onchild dan onvalue adalah event untuk memangil data dengan realtime. hanya saja perbedaannya.
+	1. onchild 	 = data yang dipangil berupa satuan. cth: ketika kita memanggil 10 data, 
+			   data yang ditampilkan tidak lagsung diberikan 10 10nya, 
+			   jadi diberikan satu satu selama 10 kali, tanpa perlu dilooping menggunakan for atau foreach
+	2. onvalue	 = data yang dipanggil sekaligus, cth: ketika kita memanggil 10 data, data yang di tampilkan harus menggunakan looping seperti foreach atau for.
+	3. oncevalue 	 = memamngil 1 data dengan 1 kali panggil (tidak realtime) data yang sifatnya statis.
+
+3. didalam onchild memiliki 3 event. 
+	1. childadded   = event untuk memaggil data saat tiap kali di add.
+	2. childchanged = merubah data di tampilan.
+	3. childremove  = menghapus data saat mendelete data saat delete.
+
+4. ketika lagi offline data transaksi bisa di padding jika online bisa di running kembali.
+
+----------------------------------------------------------------------------------------------------------------------
+
+1. Database NoSQL adalah database yang tidak menggunakan realasi antar tabel dan tidak menyimpan data dalam 
+format tabel kaku (kolom yang fix) seperti layaknya Relasional Database. 
+
+2. 
