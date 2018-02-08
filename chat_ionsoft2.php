@@ -22,12 +22,12 @@
     <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyBNQpJdt3yuFEp3ie2R6of_lP0ouI-irII",
-            authDomain: "fir-data-8a936.firebaseapp.com",
-            databaseURL: "https://fir-data-8a936.firebaseio.com",
-            projectId: "fir-data-8a936",
-            storageBucket: "",
-            messagingSenderId: "544806852434"
+            apiKey: "apiKey",
+            authDomain: "projectId.firebaseapp.com",
+            databaseURL: "https://databaseName.firebaseio.com",
+            projectId: "",
+            storageBucket: "bucket.appspot.com",
+            messagingSenderId: ""
         };
         firebase.initializeApp(config);
 
